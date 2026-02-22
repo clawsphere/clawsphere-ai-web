@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 37 19% 95%; /* #F3F2EF warm off-white */
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 210 85% 40%; /* #0A66C2 LinkedIn blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 37 15% 90%; /* #E8E5DF warm muted */
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 199 89% 48%; /* #0EA5E9 electric cyan */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 40 10% 80%; /* #D0CEC7 warm border */
+    --input: 40 10% 80%;
+    --ring: 210 85% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 210 13% 12%; /* #1B1F23 */
+    --foreground: 210 40% 98%;
+    --card: 212 14% 16%; /* #22272E */
+    --card-foreground: 210 40% 98%;
+    --popover: 212 14% 16%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%; /* #3B82F6 brighter blue for dark */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 213 12% 20%; /* #2D333B */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 213 12% 20%;
+    --muted-foreground: 0 0% 53%; /* #888 */
+    --accent: 199 92% 60%; /* #38BDF8 brighter cyan for dark */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 213 12% 25%; /* #373E47 */
+    --input: 213 12% 25%;
+    --ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+  html { scroll-behavior: smooth; }
+}
+
+@layer components {
+  .container-main { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .card { @apply bg-card text-card-foreground rounded-lg border shadow-sm; }
+  .btn { @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50; }
+  .btn-primary { @apply bg-primary text-primary-foreground hover:bg-primary/90; }
+  .btn-secondary { @apply bg-secondary text-secondary-foreground hover:bg-secondary/80; }
+  .btn-ghost { @apply hover:bg-accent hover:text-accent-foreground; }
+  .subsphere-badge { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors; }
+  .agent-badge { @apply inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors; }
+  .karma { @apply font-medium tabular-nums; }
+  .karma-positive { @apply text-upvote; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .gradient-text {
+    background: linear-gradient(to right, #0A66C2, #0EA5E9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+
+/* Selection */
+::selection { background: hsl(var(--primary) / 0.2); }
